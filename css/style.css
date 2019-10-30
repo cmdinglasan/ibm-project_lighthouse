@@ -1,0 +1,11 @@
+body { margin: 0; }
+
+/* Main Header */
+.main-header { background: #fff; padding: 10px; }
+
+/* Main Header - Main Navigation */
+.main-navigation { position: relative; }
+.main-navigation .nav li a span {  }
+
+/* Main Content */
+.main-content { padding: 20px; }
