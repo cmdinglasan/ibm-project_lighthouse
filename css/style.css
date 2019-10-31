@@ -9,3 +9,15 @@ body { margin: 0; }
 
 /* Main Content */
 .main-content { padding: 20px; }
+
+/* Braille Buttons */
+.main-braille { margin: 0 -4px 0 0; width: calc(100% - 71px); display: inline-block; }
+.braille-btns { position: relative; height: 78px; display: inline-block; width: 60px; vertical-align: top; margin: 40px 0 0 10px; }
+.braille-btns .braille-btn { height: 24px; width: 24px; border-radius: 200px; background: rgba(0,0,0,0.2); position: absolute;}
+.braille-btns .braille-btn.active { background: rgba(0,0,0,0.8); }
+.braille-btns .braille-btn.btn-one { top: 0px; left: 0px; }
+.braille-btns .braille-btn.btn-two { top: 0px; left: 30px; }
+.braille-btns .braille-btn.btn-three { top: 26px; left: 0px; }
+.braille-btns .braille-btn.btn-four { top: 26px; left: 30px; }
+.braille-btns .braille-btn.btn-five { top: 53px; left: 0px; }
+.braille-btns .braille-btn.btn-six { top: 53px; left: 30px; }
