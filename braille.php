@@ -29,7 +29,7 @@ secTxt.value = firstTxt;
 </script>
 
 <!-- Mousebind -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 
 <script type="text/JavaScript">
 Mousetrap.bind('7', function(e) {
