@@ -1,4 +1,7 @@
 <h1>Braille Converter</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#brailleInstructions">
+  Instructions
+</button>
 <form action="">
 	<div class="braille">
 		<div class="main-braille">
@@ -19,6 +22,33 @@
 	<h3>Text conversion</h3>
 	<textarea style="width: 100%; height: 200px; font-size: 32px; " name="source" class="reg-area"></textarea>
 </form>
+
+<div class="modal fade" role="dialog" id="brailleInstructions">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Braille Instructions</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		        	<span aria-hidden="true">&times;</span>
+		 		</button>
+		 	</div>
+			 <div class="modal-body">
+			 	<div class="container-fluid">
+			 		<div class="row">
+			 			<div class="col-md-6"><kbd>0</kbd> Convert</div>
+			 		</div>
+			 		<div class="row">
+			 			<div class="col-md-6">
+			 				<kbd>7</kbd> &nbsp; <kbd>8</kbd> &nbsp; <br/>
+			 				<kbd>4</kbd> &nbsp; <kbd>5</kbd> &nbsp; <br/>
+			 				<kbd>1</kbd> &nbsp; <kbd>2</kbd> &nbsp; <br/>
+			 			</div>
+			 		</div>
+			 	</div>
+			 </div>
+		 </div>
+	</div>
+</div>
 
 <script language="JavaScript">
 function txtConvert(form){
@@ -161,9 +191,5 @@ Mousetrap.bind('7+5+1+2', function(e) {
   	$(".btn-two,.btn-three,").removeClass("active");
   	$(".btn-one,.btn-four,.btn-five,.btn-six").addClass("active");
   	$(".braille-area").append("z");
-});
-
-Mousebind.bind('0', function(e) {
-	$(".reg-area").text($(".braille-area").text());
 });
 </script>
