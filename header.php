@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<!-- Mousebind -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+
+	<script src="js/genscripts.js"></script>
 
 	<!-- General -->
 	<link rel="stylesheet" href="css/style.css"/>
@@ -34,6 +39,11 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a title="Go to Text to Audio Converter" class="nav-link" id="text-tab" data-toggle="tab" href="#textaudio" role="tab" aria-controls="convert" aria-selected="false">
+							<span>Text to Audio</span>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a title="Go to Training Courses" class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="false">
 							<span>Training Courses</span>
 						</a>
@@ -44,6 +54,8 @@
 						</a>
 					</li>
 				</ul>
+				<div id="incFont">Increase Font</div>
+				<div id="decFont">Decrease Font</div>
 			</nav>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
 	<div class="braille">
 		<div class="main-braille">
 			<h3>Type here in Braille letters</h3>
-			<textarea style="font-family: 'Braille-1lA2'; width: 100%; height: 200px; font-size: 32px" name="id" class="braille-area"></textarea>
+			<textarea style="font-family: 'Braille-1lA2'; width: 100%; height: 200px; font-size: 32px" name="id" class="braille-area mousetrap" disabled></textarea>
 			<input onclick="txtConvert(this.form);" type="button" value="Convert" title="convert" class="convert"/>
 		</div>
 		<div class="braille-btns">
@@ -58,15 +58,7 @@ secTxt.value = firstTxt;
 }
 </script>
 
-<!-- Mousebind -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
-
 <script type="text/JavaScript">
-Mousetrap.bind('7', function(e) {
-  	$(".btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one").addClass("active");
-  	$(".braille-area").append("a");
-});
 Mousetrap.bind('7+4', function(e) {
   	$(".btn-two,.btn-four,.btn-five,.btn-six").removeClass("active");
   	$(".btn-one,.btn-three").addClass("active");
@@ -77,7 +69,7 @@ Mousetrap.bind('7 8', function(e) {
   	$(".btn-one,.btn-two").addClass("active");
   	$(".braille-area").append("c");
 });
-Mousetrap.bind('7+8+5', function(e) {
+Mousetrap.bind('7 8+5', function(e) {
   	$(".btn-three,.btn-five,.btn-six").removeClass("active");
   	$(".btn-one,.btn-two,.btn-four").addClass("active");
   	$(".braille-area").append("d");
@@ -192,4 +184,18 @@ Mousetrap.bind('7+5+1+2', function(e) {
   	$(".btn-one,.btn-four,.btn-five,.btn-six").addClass("active");
   	$(".braille-area").append("z");
 });
+</script>
+
+
+<script type="text/javascript">
+$(document).bind('keypress', '7', function(){
+ $(".btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
+ $(".btn-one").addClass("active");
+ $(".braille-area").append("a");
+});
+/* $(document).bind('keydown', '8', function(){
+ $(".btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
+ $(".btn-one,.btn-two").addClass("active");
+ $(".braille-area").append("c");
+}); */
 </script>

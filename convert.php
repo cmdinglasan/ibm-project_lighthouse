@@ -21,6 +21,7 @@
 				<img src="sample-files/convo-1-text-13.png" width="60">
 			</button>
 		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
