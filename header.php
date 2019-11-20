@@ -7,16 +7,23 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+
 	<!-- Mousebind -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 
 	<script src="js/genscripts.js"></script>
+	<script src="js/speech_recog.js"></script>
 
 	<!-- General -->
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="fonts/font.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Icons -->
+	<script src="https://kit.fontawesome.com/614c79ec05.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 
@@ -55,8 +62,15 @@
 						</a>
 					</li>
 				</ul>
-				<div id="incFont">Increase Font</div>
-				<div id="decFont">Decrease Font</div>
+				<div id="incFont">
+					<i class="fas fa-plus"></i>
+				</div>
+				<div id="decFont">
+					<i class="fas fa-minus"></i>
+				</div>
+				<div id="screenCon" class="active">
+					<i class="fas fa-sun"></i>
+				</div>
 			</nav>
 		</div>
 	</div>

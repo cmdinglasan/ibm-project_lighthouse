@@ -9,7 +9,8 @@
 		</div>
 		<div class="col-md-6">
 			<h1>Text</h1><br/>
-			<textarea class="border text-fill" style="height: 350px; width: 100%; resize: none;" ></textarea>
+			<textarea class="border text-fill convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
+			<button class="btn btn-primary speak-btn">Speak</button>
 		</div>
 	</div>
 	<div class="row">
@@ -20,6 +21,9 @@
 			<button class="btn btn-primary secImg">
 				<img src="sample-files/convo-1-text-13.png" width="60">
 			</button>
+			<div id="instructions">Instructions</div>
+			<select id="voicelist">
+      		</select>
 		</div>
 	</div>
 </div>
