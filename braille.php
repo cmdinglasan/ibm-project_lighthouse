@@ -7,7 +7,8 @@
 		<div class="main-braille">
 			<h3>Type here in Braille letters</h3>
 			<textarea style="font-family: 'Braille-1lA2'; width: 100%; height: 200px; font-size: 32px" name="id" class="braille-area mousetrap" disabled></textarea>
-			<input onclick="txtConvert(this.form);" type="button" value="Convert" title="convert" class="convert"/>
+			<input onclick="txtConvert(this.form);" type="button" value="Convert" title="convert" class="convert btn btn-primary"/>
+			<input type="button" class="clearTxt btn btn-primary" value="Clear"/>
 		</div>
 		<div class="braille-btns">
 			<div class="braille-btn btn-one"></div>

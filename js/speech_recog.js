@@ -23,7 +23,7 @@ $(function(){
     msg.text = text;
 
     msg.onend = function(e) {
-      console.log('Finished in ' + event.elapsedTime + ' seconds.');
+      $('#instructions').text('Finished in ' + event.elapsedTime + ' milliseconds.');
     };
 
     speechSynthesis.speak(msg);

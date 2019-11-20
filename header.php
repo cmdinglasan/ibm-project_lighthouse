@@ -14,6 +14,7 @@
 
 	<script src="js/genscripts.js"></script>
 	<script src="js/speech_recog.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 	<!-- General -->
 	<link rel="stylesheet" href="css/style.css"/>
@@ -68,7 +69,7 @@
 				<div id="decFont">
 					<i class="fas fa-minus"></i>
 				</div>
-				<div id="screenCon" class="active">
+				<div id="screenCon">
 					<i class="fas fa-sun"></i>
 				</div>
 			</nav>
