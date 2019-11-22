@@ -23,9 +23,22 @@ $(function(){
     msg.text = text;
 
     msg.onend = function(e) {
-      $('#instructions').text('Finished in ' + event.elapsedTime + ' milliseconds.');
+      $('.pause-btn').addClass('hidden');
+      $('.play-btn').removeClass('hidden');
     };
-
-    speechSynthesis.speak(msg);
+    $('#instructions').text(speechSynthesis.speaking);
+    $('.play-btn').click(function() {
+        speechSynthesis.speak(msg);
+        $(this).addClass('hidden');
+    });
+    $('.pause-btn').click(function() {
+        $(this).removeClass('hidden');
+    }); 
+    $('.stop-btn').click(function() {
+        speechSynthesis.cancel();
+    }); 
+    if(speechSynthesis.speaking) {
+      $('.pause-btn').removeClass('hidden');
+    }
   })
 });

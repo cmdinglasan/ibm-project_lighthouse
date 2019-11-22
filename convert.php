@@ -10,7 +10,15 @@
 		<div class="col-md-6">
 			<h1>Text</h1><br/>
 			<textarea class="border text-fill convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
-			<button class="btn btn-primary speak-btn">Speak</button>
+			<button class="play-btn btn-md speak-btn">
+				<i class="fas fa-play"></i>
+			</button>
+			<button class="pause-btn btn-md speak-btn hidden active">
+				<i class="fas fa-pause"></i>
+			</button>
+			<button class="stop-btn btn-md">
+				<i class="fas fa-stop"></i>
+			</button>
 		</div>
 	</div>
 	<div class="row">

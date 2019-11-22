@@ -7,13 +7,14 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/speech_recog.js"></script>
 
 	<!-- Mousebind -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 
 	<script src="js/genscripts.js"></script>
-	<script src="js/speech_recog.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 	<!-- General -->
@@ -63,13 +64,13 @@
 						</a>
 					</li>
 				</ul>
-				<div id="incFont">
+				<div id="incFont" class="btn-md">
 					<i class="fas fa-plus"></i>
 				</div>
-				<div id="decFont">
+				<div id="decFont" class="btn-md">
 					<i class="fas fa-minus"></i>
 				</div>
-				<div id="screenCon">
+				<div id="screenCon" class="btn-md">
 					<i class="fas fa-sun"></i>
 				</div>
 			</nav>
