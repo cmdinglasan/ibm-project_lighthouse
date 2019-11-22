@@ -23,22 +23,37 @@ $(function(){
     msg.text = text;
 
     msg.onend = function(e) {
+      $('#instructions').text('Finished speaking');
       $('.pause-btn').addClass('hidden');
-      $('.play-btn').removeClass('hidden');
+      $('.resume-btn').addClass('hidden');
+      $('.stop-btn').addClass('disabled');
+      $('.speak-btn').removeClass('hidden');
     };
-    $('#instructions').text(speechSynthesis.speaking);
-    $('.play-btn').click(function() {
-        speechSynthesis.speak(msg);
-        $(this).addClass('hidden');
-    });
-    $('.pause-btn').click(function() {
-        $(this).removeClass('hidden');
-    }); 
-    $('.stop-btn').click(function() {
-        speechSynthesis.cancel();
-    }); 
-    if(speechSynthesis.speaking) {
-      $('.pause-btn').removeClass('hidden');
+    msg.onstart = function(e) {
+      $('#instructions').text(event.timeStamp);
     }
-  })
+
+    speechSynthesis.speak(msg);
+
+    $(this).addClass('hidden');
+    $('.stop-btn').removeClass('disabled');
+    $('.pause-btn').removeClass('hidden');
+  });
+
+  $('#instructions').text(speechSynthesis.paused);
+  $('.pause-btn').click(function(){
+    speechSynthesis.pause();
+    $(this).addClass('hidden');
+    $('.resume-btn').removeClass('hidden');
+  });
+  $('.resume-btn').click(function(){
+    speechSynthesis.resume();
+    $('.resume-btn').addClass('hidden');
+    $('.pause-btn').removeClass('hidden');
+  });
+  $('.stop-btn').click(function(){
+    speechSynthesis.cancel();
+    $('.pause-btn').addClass('hidden');
+    $('.speak-btn').removeClass('hidden');
+  });
 });
