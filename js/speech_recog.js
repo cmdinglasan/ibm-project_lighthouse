@@ -14,12 +14,13 @@ $(function(){
       $voicelist.append($option);
     });
   }
+
+  var msg = new SpeechSynthesisUtterance();
+  var voices = window.speechSynthesis.getVoices();
+  msg.voice = voices[$('#voicelist').val()];
   
   $('.speak-btn').click(function(){
     var text = $('.convertedTxt').val();
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices[$('#voicelist').val()];
     msg.text = text;
 
     msg.onend = function(e) {
@@ -39,6 +40,61 @@ $(function(){
     $('.stop-btn').removeClass('disabled');
     $('.pause-btn').removeClass('hidden');
   });
+
+  $(document).ready(function() {
+    var text = $('#home-tab').text();
+    msg.text = text;
+    speechSynthesis.speak(msg);
+  })
+
+  if($('div#home').hasClass('show')) {
+    $(document).ready(function() {
+      var text = $('div#home.show').text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    });
+  };
+
+  // Tab Links
+  $('#home-tab').focus(function(){
+    var text = $(this).text();
+    msg.text = text;
+    speechSynthesis.speak(msg);
+  });
+
+  $('#braille-tab').focus(function(){
+    if(speechSynthesis.speaking){
+      var text = $(this).text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    };
+  });
+
+  $('#courses-tab').focus(function(){
+    var text = $(this).text();
+    msg.text = text;
+    speechSynthesis.speak(msg);
+  });
+
+  $('#convert-tab').focus(function(){
+    var text = $(this).text();
+    msg.text = text;
+    speechSynthesis.speak(msg);
+
+    msg.onend = function(e) {
+      var text = "Upload your image";
+      msg.text = text;
+      speechSynthesis.speak(msg);
+      speechSynthesis.cancel();
+    };
+  });
+
+  $('#access-tab').focus(function(){
+    var text = $(this).text();
+    msg.text = text;
+    speechSynthesis.speak(msg);
+  });
+  // End of tab links
 
   $('#instructions').text(speechSynthesis.paused);
   $('.pause-btn').click(function(){

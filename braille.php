@@ -60,12 +60,17 @@ secTxt.value = firstTxt;
 </script>
 
 <script type="text/JavaScript">
-Mousetrap.bind('7+4', function(e) {
+Mousetrap.bind('s', function(e) {
+    $(".btn-two,.btn-four,.btn-five,.btn-six").removeClass("active");
+    $(".btn-one,.btn-three").addClass("active");
+    $(".braille-area").append("a");
+});
+Mousetrap.bind('s d', function(e) {
   	$(".btn-two,.btn-four,.btn-five,.btn-six").removeClass("active");
   	$(".btn-one,.btn-three").addClass("active");
   	$(".braille-area").append("b");
 });
-Mousetrap.bind('7 8', function(e) {
+Mousetrap.bind('d+s', function(e) {
   	$(".btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
   	$(".btn-one,.btn-two").addClass("active");
   	$(".braille-area").append("c");
@@ -145,11 +150,6 @@ Mousetrap.bind('r', function(e) {
   	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
   	$(".braille-area").append("r");
 });
-Mousetrap.bind('s', function(e) {
-  	$(".btn-one,.btn-four,.btn-six").removeClass("active");
-  	$(".btn-two,.btn-three,.btn-five").addClass("active");
-  	$(".braille-area").append("s");
-});
 Mousetrap.bind('t', function(e) {
   	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
   	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
@@ -180,21 +180,15 @@ Mousetrap.bind('y', function(e) {
   	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
   	$(".braille-area").append("y");
 });
-Mousetrap.bind('7+5+1+2', function(e) {
-  	$(".btn-two,.btn-three,").removeClass("active");
-  	$(".btn-one,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("z");
+Mousetrap.bind('z', function(e) {
+    $(".btn-two,.btn-three,").removeClass("active");
+    $(".btn-one,.btn-four,.btn-five,.btn-six").addClass("active");
+    $(".braille-area").append("z");
 });
 </script>
 
 
-<script type="text/javascript">
-$(document).bind('keypress', '7', function(){
- $(".btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
- $(".btn-one").addClass("active");
- $(".braille-area").append("a");
-});
-/* $(document).bind('keydown', '8', function(){
+<script type="text/javascript">/* $(document).bind('keydown', '8', function(){
  $(".btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
  $(".btn-one,.btn-two").addClass("active");
  $(".braille-area").append("c");
