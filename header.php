@@ -49,11 +49,6 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a title="Go to Text to Audio Converter" class="nav-link" id="text-tab" data-toggle="tab" href="#textaudio" role="tab" aria-controls="convert" aria-selected="false">
-							<span>Text to Audio</span>
-						</a>
-					</li>
-					<li class="nav-item">
 						<a title="Go to Training Courses" class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="false">
 							<span>Training Courses</span>
 						</a>
