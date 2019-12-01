@@ -41,11 +41,12 @@ $(function(){
     $('.pause-btn').removeClass('hidden');
   });
 
+/* 
   $(document).ready(function() {
     var text = $('#home-tab').text();
     msg.text = text;
     speechSynthesis.speak(msg);
-  })
+  });
 
   if($('div#home').hasClass('show')) {
     $(document).ready(function() {
@@ -53,7 +54,7 @@ $(function(){
       msg.text = text;
       speechSynthesis.speak(msg);
     });
-  };
+  }; */
 
   // Tab Links
   $('#home-tab').focus(function(){
@@ -64,6 +65,7 @@ $(function(){
 
   $('#braille-tab').focus(function(){
     if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
       var text = $(this).text();
       msg.text = text;
       speechSynthesis.speak(msg);

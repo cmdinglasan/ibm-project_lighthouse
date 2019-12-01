@@ -4,12 +4,16 @@
 			<h1>Image</h1><br/>
 			<div class="border" style="height: 350px; overflow-y: auto; ">
 				<img id="output" style="width:100%;"/>
+				<input type="text" id="url">
 			</div><br/>
 			<input type="file" accept="image/*" name="image" id="file" class="button" style="display: none;"><label for="file" class="file-img btn btn-primary" style="cursor: pointer;">Upload file</label>
+
+			<button class="convert-txt btn btn-primary" id="convert-txt">Convert Text</button>
 		</div>
 		<div class="col-md-6">
 			<h1>Text</h1><br/>
-			<textarea class="border text-fill convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
+			<textarea class="border text-fill convertedTxt" id="convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
+			<textarea id="ocr_status"></textarea>
 			<button class="speak-btn btn-md ">
 				<i class="fas fa-play"></i>
 			</button>
@@ -70,4 +74,22 @@ $(document).ready(function(){
 	    $(".text-fill").text("Do you mind if I maybe come over? I'm sorry I don't know if it's going to get better soon");
     });
 })
+</script>
+
+<!-- Using a free CDN -->
+<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+
+<!-- Tesseract OCR -->
+<script>
+function runOCR(url) {
+    Tesseract.recognize(url).then(function(result) {
+            document.getElementById("convertedTxt").innerText= result.text;
+         }).progress(function(result) {
+            document.getElementById("ocr_status").innerText = result["status"] + " (" +(result["progress"] * 100) + "%)";
+        });
+}
+document.getElementById("convert-txt").addEventListener("click", function(e) {
+    var url = document.getElementById("output").src;
+    runOCR(url);
+});
 </script>
