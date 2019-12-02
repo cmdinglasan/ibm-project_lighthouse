@@ -27,7 +27,7 @@
 		}; */
 
 		// Start of Speech Recognition
-		$('#speechToText').on('click', function(e) {
+		$('#speechToText').on('click touchstart', function(e) {
 		  var recognition = new webkitSpeechRecognition();
 		  // Results
 		  recognition.onresult = function(event) { 
