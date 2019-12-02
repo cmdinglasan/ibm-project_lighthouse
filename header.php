@@ -7,14 +7,13 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	
-	<script src="js/speech_recog.js"></script>
 
 	<!-- Mousebind -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 
 	<script src="js/genscripts.js"></script>
+	<script src="js/speech_recog.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 	<!-- General -->
@@ -46,6 +45,11 @@
 					<li class="nav-item">
 						<a title="Go to Image to text to Audio Converter" class="nav-link" id="convert-tab" data-toggle="tab" href="#convert" role="tab" aria-controls="convert" aria-selected="false">
 							<span>Image to Audio</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a title="Go to Speech Recognition" class="nav-link" id="recognition-tab" data-toggle="tab" href="#recognition" role="tab" aria-controls="recognition" aria-selected="false">
+							<span>Speech Recognition</span>
 						</a>
 					</li>
 					<li class="nav-item">

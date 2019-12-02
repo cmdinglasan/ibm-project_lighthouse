@@ -1,4 +1,4 @@
-/* Speech Recognition 
+/* Speech Synthesis
 by http://creative-punch.net/2014/10/intro-html5-speech-synthesis-api/ */
 
 $(function(){
@@ -72,29 +72,47 @@ $(function(){
     };
   });
 
-  $('#courses-tab').focus(function(){
-    var text = $(this).text();
-    msg.text = text;
-    speechSynthesis.speak(msg);
+  $('#courses-tab').click(function(){
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+      var text = $(this).text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    };
+  });
+
+  $('#recognition-tab').focus(function(){
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+      var text = $(this).text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    };
   });
 
   $('#convert-tab').focus(function(){
-    var text = $(this).text();
-    msg.text = text;
-    speechSynthesis.speak(msg);
-
-    msg.onend = function(e) {
-      var text = "Upload your image";
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+      var text = $(this).text();
       msg.text = text;
       speechSynthesis.speak(msg);
-      speechSynthesis.cancel();
+
+      msg.onend = function(e) {
+        var text = "Upload your image";
+        msg.text = text;
+        speechSynthesis.speak(msg);
+        speechSynthesis.cancel();
+      };
     };
   });
 
   $('#access-tab').focus(function(){
-    var text = $(this).text();
-    msg.text = text;
-    speechSynthesis.speak(msg);
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+      var text = $(this).text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    };
   });
   // End of tab links
 
