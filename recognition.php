@@ -50,6 +50,7 @@
 		    msg.text = text;
 			$('#speech-result').text(text);
 		    speechSynthesis.speak(msg);
+			recognition.start();
 		});
 
 		Mousetrap.bind('space', function(e) {
