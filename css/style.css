@@ -3,6 +3,7 @@ body { margin: 0; }
 /* Body */
 .darkmd { background: #212121; color: #fff; }
 .darkmd .main-header { background: #212121; }
+.container { position: relative; }
 
 /* Main Header */
 .main-header { background: #fff; padding: 10px; }
@@ -13,6 +14,14 @@ body { margin: 0; }
 
 /* Main Content */
 .main-content { padding: 20px; }
+
+/* Speech Recognition Box */
+.speech-recognition-box { position: relative; background: red; color: #fff; height: 30px; width: 100%; padding: 3px 0; transition: all .2s ease; }
+.speech-recognition-box.active { background: green; }
+.speech-recognition-box .speech-status { opacity: 0; visibility: hidden; transition: all .2s ease; position: absolute; }
+.speech-recognition-box.active .speech-status { opacity: 1; visibility: visible; }
+.speech-recognition-box.with-result { background: #007bff; }
+.speech-recognition-box.active .speech-result { opacity: 0; visibility: hidden; }
 
 /* Braille Textboxes */
 .darkmd textarea, .darkmd textarea:disabled { border: 1px solid #fff; background: transparent; color: #fff; }

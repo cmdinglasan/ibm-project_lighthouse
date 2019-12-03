@@ -2,6 +2,12 @@
 ynhat (https://www.jsfiddle.net/ynhat/CeaqU)
 */
 
+$(document).keydown(function(e) {
+    if (e.which == 32) {
+        return false;
+    }
+});
+
 Mousetrap.bind('+', function(e) {
   	$('#incFont').click(function() {
         $('body').css("font-size", function() {
