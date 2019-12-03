@@ -53,12 +53,13 @@
 			recognition.start();
 		});
 
-		Mousetrap.bind('space', function(e) {
+		function recognize() {
+			speechSynthesis.cancel();
+			$('.speech-recognition-box').addClass('active');
+			$('#speech-status').text('Currently Recording');
+			assistTone.play();
 			// Results
 			recognition.onstart = function(event) {
-				$('.speech-recognition-box').addClass('active');
-				$('#speech-status').text('Currently Recording');
-				assistTone.play();
 			};
 			recognition.onend = function(event) {
 				$('.speech-recognition-box').removeClass('active');
@@ -127,48 +128,19 @@
 
 			// Start Recognition
 			recognition.start();
+		};
+
+		$(document).on('touchstart', function() {
+			recognize();
+		});
+
+		Mousetrap.bind('space', function(e) {
+			speechSynthesis.cancel();
+			recognize();
 		});
 
 		$('#speechToText').on('click', function(e) {
-			// Results
-			  recognition.onresult = function(event) { 
-			    var last = event.results.length - 1;
-			      var sentence = event.results[last][0].transcript;
-			      $('#transcript').text(sentence);
-			      $('#support').text('Confidence Level: ' + event.results[0][0].confidence);
-
-			  var resultTrans = $('#transcript').text();
-			  var showResult = $('.content-transcript');
-			      // Resulting Commands
-			    /* if(resultTrans == 'ok lighthouse show support') {
-			      showResult.text('Show Support [check]');
-			    } else if(resultTrans == 'ok lighthouse go to braille' || resultTrans == 'ok lighthouse translate braille' || resultTrans == 'ok lighthouse braille translate') {
-			      showResult.text('Go to Braille [check]');
-			    }; */
-
-			    // If Command is for Braille
-			    if (jQuery.inArray(resultTrans, braille)!='-1') {
-			      showResult.prepend('<br/> Go to Braille ' + braille.indexOf(resultTrans) + ' [check]');
-			    } else if (jQuery.inArray(resultTrans, menu)!='-1') {
-			    	if(menu.indexOf(resultTrans) == 0) {
-			    		$('[href="#home"]').tab('show');
-			    	} else if(menu.indexOf(resultTrans) == 1 || menu.indexOf(resultTrans) == 2) {
-			    		$('[href="#convert"]').tab('show');
-			    	} else if(menu.indexOf(resultTrans) == 3) {
-			    		$('[href="#recognition"]').tab('show');
-			    	} else if(menu.indexOf(resultTrans) == 4) {
-			    		$('[href="#courses"]').tab('show');
-			    	} else if(menu.indexOf(resultTrans) == 5) {
-			    		$('[href="#access"]').tab('show');
-			    	} 
-			      showResult.prepend('<br/> Menu: ' + menu.indexOf(resultTrans) + ' [check]');
-			    } else {
-			    	showResult.prepend('<br/> Command not found. Please try again.');
-			    };
-			  };
-
-			  // Start Recognition
-			  recognition.start();
+			recognize();
 		});
 
 		</script>
