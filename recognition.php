@@ -12,6 +12,7 @@
 		var com = 'ok lighthouse ';
 		var braille = [com + 'go to braille', com + 'translate braille', com + 'braille translate', com + 'grill translate'];
 		var menu = [com + 'go home', com + 'go to convert', com + 'go2convert', com + 'go to recognition', com + 'go to courses', com + 'go to access'];
+		var homemenu = ['go home', 'go to home'];
 
 		if ('SpeechRecognition' in window) {
 		  $('#support').text('Supported in Firefox only');
@@ -20,6 +21,7 @@
 		};
 
 		window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+		var recognition = new window.SpeechRecognition();
 		/* if ('SpeechRecognition' in window) {
 		  $('#support').text('Supported');
 		} else {
@@ -28,7 +30,6 @@
 
 		// Start of Speech Recognition
 		$('#speechToText').on('click', function(e) {
-		  var recognition = new webkitSpeechRecognition();
 		  // Results
 		  recognition.onresult = function(event) { 
 		    var last = event.results.length - 1;
