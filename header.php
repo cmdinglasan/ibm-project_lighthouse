@@ -82,6 +82,9 @@
 				<div id="screenCon" class="btn-md">
 					<i class="fas fa-sun"></i>
 				</div>
+				<div id="speakMic" class="btn-md">
+					<i class="fas fa-microphone"></i>
+				</div>
 			</nav>
 		</div>
 	</div>

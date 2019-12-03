@@ -51,6 +51,7 @@
 			$('#speech-result').text(text);
 		    speechSynthesis.speak(msg);
 			recognition.start();
+			recognition.stop();
 		});
 
 		function recognize() {
@@ -140,6 +141,10 @@
 		});
 
 		$('#speechToText').on('click', function(e) {
+			recognize();
+		});
+
+		$('#speakMic').on('click vclick', function(e) {
 			recognize();
 		});
 
