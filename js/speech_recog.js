@@ -20,7 +20,7 @@ var enable = 'enable ';
 var disable = 'disable ';
 var braille = ['go to braille', 'translate braille', 'braille translate', 'grill translate'];
 var home = ['go home', 'go to home', 'select home'];
-var menu = ['menu'];W
+var menu = ['menu'];
 var convert = ['go to convert', 'convert image to audio'];
 var contrastCmd = ['dark mode'];
 var enableContrast = [enable + 'dark mode'];
@@ -136,6 +136,7 @@ function recognize() {
 };
 
 $(document).on('touchstart', function() {
+	speechSynthesis.cancel();
 	recognize();
 });
 
