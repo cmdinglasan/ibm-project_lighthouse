@@ -18,14 +18,14 @@ assistEnd.setAttribute('src','sample-files/siriEnd.mp3');
 var com = 'lighthouse ';
 var enable = 'enable ';
 var disable = 'disable ';
-var braille = [com + 'go to braille', com + 'translate braille', com + 'braille translate', com + 'grill translate'];
-var home = [com + 'go home', com + 'go to home', com + 'select home'];
-var menu = [com + 'menu'];
-var convert = [com + 'go to convert', com + 'convert image to audio'];
+var braille = ['go to braille', 'translate braille', 'braille translate', 'grill translate'];
+var home = ['go home', 'go to home', 'select home'];
+var menu = ['menu'];W
+var convert = ['go to convert', 'convert image to audio'];
 var contrastCmd = ['dark mode'];
-var enableContrast = [com + enable + 'dark mode'];
-var disableContrast = [com + disable + 'dark mode'];
-var cancelSynthesis = [com + 'cancel speaking', com + 'cancel synthesis'];
+var enableContrast = [enable + 'dark mode'];
+var disableContrast = [disable + 'dark mode'];
+var cancelSynthesis = ['cancel speaking', 'cancel synthesis'];
 
 // Speech Synthesis Defaults
 var msg = new SpeechSynthesisUtterance();
