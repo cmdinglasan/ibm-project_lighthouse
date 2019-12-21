@@ -50,3 +50,8 @@ body { margin: 0; }
 #screenCon { bottom: 160px; left: 20px; position: fixed; }
 
 .hidden { display: none; }
+
+/* Image to Audio */
+.conversionArea { position: relative; height: 350px; width: 100%; }
+.conversionArea #convertedTxt {  }
+.conversionArea #ocr_status { position: absolute; bottom: 0; left: 0; width: 100%; resize: none; border: 0; height: 30px; padding: 2.5px; line-height: 25px; overflow: hidden; }

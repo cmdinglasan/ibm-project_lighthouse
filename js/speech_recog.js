@@ -1,135 +1,153 @@
-/* Speech Synthesis
-by http://creative-punch.net/2014/10/intro-html5-speech-synthesis-api/ */
+// Created by Project Lighthouse
 
-$(function(){
-  speechSynthesis.onvoiceschanged = function() {
-    var $voicelist = $('#voicelist');
-        
-    speechSynthesis.getVoices().forEach(function(voice, index) {
-      console.log(index, voice.name, voice.default ? '(default)' :'');
-      var $option = $('<option>')
-      .val(index)
-      .html(voice.name + (voice.default ? ' (default)' :''));
-      
-      $voicelist.append($option);
-    });
-  }
+var command = $.getJSON("js/test.json", function(data) {
+	$(data).each(function() {
+		var result = this.commands[0].statement[0].phrase;
+		console.log(result);
+		$('#displayJSON').html(result);
+	});
+	// console.log(data.commands[0].statement[0].phrase);
+	// $('#displayJSON').text(data.commands[0].statement[0].phrase);
+    // return data;
+});
 
-  var msg = new SpeechSynthesisUtterance();
-  var voices = window.speechSynthesis.getVoices();
-  msg.voice = voices[$('#voicelist').val()];
-  
-  $('.speak-btn').click(function(){
-    var text = $('.convertedTxt').val();
+var assistTone = document.createElement('audio');
+assistTone.setAttribute('src', 'sample-files/siri.mp3');
+var assistEnd = document.createElement('audio');
+assistEnd.setAttribute('src','sample-files/siriEnd.mp3');
+var com = 'lighthouse ';
+var enable = 'enable ';
+var disable = 'disable ';
+var braille = [com + 'go to braille', com + 'translate braille', com + 'braille translate', com + 'grill translate'];
+var home = [com + 'go home', com + 'go to home', com + 'select home'];
+var menu = [com + 'menu'];
+var convert = [com + 'go to convert', com + 'convert image to audio'];
+var contrastCmd = ['dark mode'];
+var enableContrast = [com + enable + 'dark mode'];
+var disableContrast = [com + disable + 'dark mode'];
+var cancelSynthesis = [com + 'cancel speaking', com + 'cancel synthesis'];
+
+// Speech Synthesis Defaults
+var msg = new SpeechSynthesisUtterance();
+var voices = window.speechSynthesis.getVoices();
+msg.voice = voices[$('#voicelist').val()];
+
+if ('SpeechRecognition' in window) {
+  $('#support').text('Supported in Firefox only');
+} else if ('webkitSpeechRecognition' in window) {
+  $('#support').text('Supported in Chrome only'); 
+};
+
+window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+var recognition = new window.SpeechRecognition();
+/* if ('SpeechRecognition' in window) {
+  $('#support').text('Supported');
+} else {
+  $('#support').text('Not Supported');
+}; */
+
+// Start of Speech Recognition
+$(function() {
+	text = 'test';
     msg.text = text;
-
-    msg.onend = function(e) {
-      $('#instructions').text('Finished speaking');
-      $('.pause-btn').addClass('hidden');
-      $('.resume-btn').addClass('hidden');
-      $('.stop-btn').addClass('disabled');
-      $('.speak-btn').removeClass('hidden');
-    };
-    msg.onstart = function(e) {
-      $('#instructions').text(event.timeStamp);
-    }
-
+	$('#speech-result').text(text);
     speechSynthesis.speak(msg);
+	recognition.start();
+	recognition.stop();
+});
 
-    $(this).addClass('hidden');
-    $('.stop-btn').removeClass('disabled');
-    $('.pause-btn').removeClass('hidden');
-  });
+function recognize() {
+	recognition.interimResults = true;
+	// Results
+	recognition.onstart = function(event) {
+		speechSynthesis.cancel();
+		$('.speech-recognition-box').addClass('active').removeClass('with-result');
+		$('#speech-status').text('Currently Recording');
+		assistTone.play();
+	};
+	recognition.onend = function(event) {
+		$('.speech-recognition-box').removeClass('active');
+		$('#speech-status').text('Finished Recording');
+		assistEnd.play();
+	};
+	recognition.onresult = function(event) {$('.speech-recognition-box').addClass('with-result'); 
+	    var last = event.results.length - 1;
+	    var sentence = event.results[last][0].transcript;
+	      $('#transcript').text(sentence);
+	      $('#support').text('Confidence Level: ' + event.results[0][0].confidence);
 
-/* 
-  $(document).ready(function() {
-    var text = $('#home-tab').text();
-    msg.text = text;
-    speechSynthesis.speak(msg);
-  });
+	    $('#speech-result').text(sentence);
 
-  if($('div#home').hasClass('show')) {
-    $(document).ready(function() {
-      var text = $('div#home.show').text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
-    });
-  }; */
+	var resultTrans = $('#transcript').text();
+	var showResult = $('.content-transcript');
+	      // Resulting Commands
+	    /* if(resultTrans == 'ok lighthouse show support') {
+	      showResult.text('Show Support [check]');
+	    } else if(resultTrans == 'ok lighthouse go to braille' || resultTrans == 'ok lighthouse translate braille' || resultTrans == 'ok lighthouse braille translate') {
+	      showResult.text('Go to Braille [check]');
+	    }; */
 
-  // Tab Links
-  $('#home-tab').focus(function(){
-    var text = $(this).text();
-    msg.text = text;
-    speechSynthesis.speak(msg);
-  });
+	// Braille Commands
+	if (jQuery.inArray(resultTrans, braille)!='-1') {
+	    showResult.prepend('<br/> Go to Braille ' + braille.indexOf(resultTrans) + ' [check]');
+	    $('[href="#braille"]').tab('show');
+	} 
 
-  $('#braille-tab').focus(function(){
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-      var text = $(this).text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
+	// Home Commands
+	else if (jQuery.inArray(resultTrans, home)!='-1') {
+	    $('[href="#home"]').tab('show');
+	}
+
+	// Speech Synthesis Commands
+	else if (jQuery.inArray(resultTrans, cancelSynthesis)!='-1') {
+			speechSynthesis.cancel();
+	}
+
+	// Convert Image to Audio Commands
+	else if (jQuery.inArray(resultTrans, convert)!='-1') {
+			$('[href="#convert"]').tab('show');
+	}
+
+	// Menu Commands
+	else if (jQuery.inArray(resultTrans, menu)!='-1') {
+	    var text = $('.nav-item').text();
+	    msg.text = text;
+	    speechSynthesis.speak(msg);
+    } 
+
+    // Contrast Commands
+    else if(jQuery.inArray(resultTrans, enableContrast)!='-1') {
+	    $('body').addClass('darkmd');
+		$(this).addClass('active');	
+    } else if(jQuery.inArray(resultTrans, disableContrast)!='-1') {
+    	$('body').removeClass('darkmd');
+		$(this).removeClass('active');	
+    } 
+
+    // Default when no command
+    else {
+    	showResult.prepend('<br/> Command not found. Please try again.');
     };
-  });
 
-  $('#courses-tab').click(function(){
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-      var text = $(this).text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
-    };
-  });
+	};
 
-  $('#recognition-tab').focus(function(){
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-      var text = $(this).text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
-    };
-  });
+	// Start Recognition
+	recognition.start();
+};
 
-  $('#convert-tab').focus(function(){
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-      var text = $(this).text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
+$(document).on('touchstart', function() {
+	recognize();
+});
 
-      msg.onend = function(e) {
-        var text = "Upload your image";
-        msg.text = text;
-        speechSynthesis.speak(msg);
-        speechSynthesis.cancel();
-      };
-    };
-  });
+Mousetrap.bind('space', function(e) {
+	speechSynthesis.cancel();
+	recognize();
+});
 
-  $('#access-tab').focus(function(){
-    if(speechSynthesis.speaking){
-      speechSynthesis.cancel();
-      var text = $(this).text();
-      msg.text = text;
-      speechSynthesis.speak(msg);
-    };
-  });
-  // End of tab links
+$('#speechToText').on('click', function(e) {
+	recognize();
+});
 
-  $('#instructions').text(speechSynthesis.paused);
-  $('.pause-btn').click(function(){
-    speechSynthesis.pause();
-    $(this).addClass('hidden');
-    $('.resume-btn').removeClass('hidden');
-  });
-  $('.resume-btn').click(function(){
-    speechSynthesis.resume();
-    $('.resume-btn').addClass('hidden');
-    $('.pause-btn').removeClass('hidden');
-  });
-  $('.stop-btn').click(function(){
-    speechSynthesis.cancel();
-    $('.pause-btn').addClass('hidden');
-    $('.speak-btn').removeClass('hidden');
-  });
+$('#speakMic').on('click vclick', function(e) {
+	recognize();
 });

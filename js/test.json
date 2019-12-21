@@ -1,0 +1,21 @@
+{ 
+	"commands": [
+		{
+			"id":1,
+			"command":"menu",
+			"statement":[
+				{"phrase":"go home"},
+				{"phrase":"go to home"},
+				{"phrase":"go back home"}
+			]
+		},
+		{
+			"id":2,
+			"command":"braille",
+			"statement":[
+				{"phrase":"go braille"},
+				{"phrase":"go to braille"}
+			]
+		}
+	]
+}

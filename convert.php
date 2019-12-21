@@ -4,16 +4,17 @@
 			<h1>Image</h1><br/>
 			<div class="border" style="height: 350px; overflow-y: auto; ">
 				<img id="output" style="width:100%;"/>
-				<input type="text" id="url">
 			</div><br/>
-			<input type="file" accept="image/*" name="image" id="file" class="button" style="display: none;"><label for="file" class="file-img btn btn-primary" style="cursor: pointer;">Upload file</label>
+			<input type="file" accept="image/*" name="image" id="file"  class="button" style="display: none;"><label for="file" class="file-img btn btn-primary" style="cursor: pointer;">Upload file</label>
 
 			<button class="convert-txt btn btn-primary" id="convert-txt">Convert Text</button>
 		</div>
 		<div class="col-md-6">
 			<h1>Text</h1><br/>
-			<textarea class="border text-fill convertedTxt" id="convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
-			<textarea id="ocr_status"></textarea>
+			<div class="conversionArea">
+				<textarea class="border text-fill convertedTxt" id="convertedTxt" style="height: 350px; width: 100%; resize: none;"></textarea>
+				<textarea id="ocr_status" disabled></textarea>
+			</div>
 			<button class="speak-btn btn-md ">
 				<i class="fas fa-play"></i>
 			</button>
@@ -78,6 +79,32 @@ $(document).ready(function(){
 
 <!-- Using a free CDN -->
 <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+<script src="js/ocrad.js"></script>
+
+<!-- script>
+function recognize_image(){
+	document.getElementById('ocr_status').innerText = "(Recognizing...)"
+	OCRAD(document.getElementById("output"), {
+		numeric: true
+	}, function(text){
+		
+	})
+}
+function load_file () {
+	var reader = new FileReader();
+	reader.onload = function(){
+		var img = new Image();
+		img.src = reader.result;
+		img.onload = function(){
+			OCRAD(img, function(text){
+				document.getElementById('ocr_status').className = "done";
+				document.getElementById('convertedTxt').innerText = text;
+			})
+		}
+	}
+	reader.readAsDataURL(document.getElementById('file').files[0])
+};
+</script -->
 
 <!-- Tesseract OCR -->
 <script>
