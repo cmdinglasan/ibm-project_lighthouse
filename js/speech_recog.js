@@ -113,6 +113,7 @@ function recognize() {
 	    var text = $('.nav-item').text();
 	    msg.text = text;
 	    speechSynthesis.speak(msg);
+		speechSynthesis.cancel();
     } 
 
     // Contrast Commands
