@@ -143,6 +143,7 @@ function recognize() {
 
 $('#assistant').on('click touch', function(e) {
 	recognize();
+	$('body').addClass('click');
 });
 
 Mousetrap.bind('space', function(e) {
