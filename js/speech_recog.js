@@ -147,7 +147,7 @@ Mousetrap.bind('space', function(e) {
 });
 
 $(document).ready(function() {
-	$('#assistant').on('click touch', function(e) {
+	$('#assistant').on('click', function(e) {
 		recognize();
 		$('body').addClass('click');
 	});
