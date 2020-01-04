@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="fonts/font.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="img/lighthouse_app_icon.png" type="image/png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 
 	<!-- Icons -->
 	<script src="https://kit.fontawesome.com/614c79ec05.js" crossorigin="anonymous"></script>
