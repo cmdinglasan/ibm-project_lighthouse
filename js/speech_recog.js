@@ -141,7 +141,7 @@ function recognize() {
 	recognition.start();
 };
 
-$('#assistant').click(function(e) {
+$('#assistant').on('click touch', function(e) {
 	recognize();
 });
 
