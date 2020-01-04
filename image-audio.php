@@ -1,3 +1,8 @@
+<?php include 'header.php';?>
+
+<div class="site-wrapper">
+	<div class="container">
+		
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
@@ -120,3 +125,8 @@ document.getElementById("convert-txt").addEventListener("click", function(e) {
     runOCR(url);
 });
 </script>
+		
+	</div>
+</div>
+
+<?php include 'footer.php';?>

@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Braille-1lA2';
+  src: url('Braille-1lA2.eot');
+  src: url('Braille-1lA2.eot?#iefix') format('embedded-opentype'),
+       url('Braille-1lA2.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BrailleReg';
+  src: url('BrailleReg.svg#BrailleReg') format('svg'),
+       url('BrailleReg.ttf') format('truetype'),
+       url('BrailleReg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
