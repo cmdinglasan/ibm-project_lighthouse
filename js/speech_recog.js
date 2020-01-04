@@ -141,16 +141,17 @@ function recognize() {
 	recognition.start();
 };
 
-$('#assistant').on('click touch', function(e) {
-	recognize();
-	$('body').addClass('click');
-});
-
 Mousetrap.bind('space', function(e) {
 	speechSynthesis.cancel();
 	recognize();
 });
 
-$('#speechToText').on('click', function(e) {
-	recognize();
+$(document).ready(function() {
+	$('#assistant').on('click touch', function(e) {
+		recognize();
+		$('body').addClass('click');
+	});
+	$('#speechToText').on('click', function(e) {
+		recognize();
+	});
 });

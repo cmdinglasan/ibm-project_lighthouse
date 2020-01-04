@@ -11,10 +11,9 @@
 	<!-- Mousebind -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
-
-	<script src="js/genscripts.js"></script>
 	<script src="js/speech_synthesis.js"></script>
 	<script src="js/speech_recog.js"></script>
+	<script src="js/genscripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 	<!-- General -->
