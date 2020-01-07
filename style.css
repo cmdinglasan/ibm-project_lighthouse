@@ -47,7 +47,7 @@ body.dark .main-nav .menu li a svg { fill: #fff !important; }
 .voice-assistant .voice-assistant-container { position: relative; }
 .voice-assistant .voice-assistant-btn { background: #fff url(img/lighthouse_app_icon.png); height: 64px; width: 64px; border-radius: 100px; background-size: auto 200%; background-position: 52% 0%; cursor: pointer; position: absolute; right: 0; bottom: 0; z-index: 3;}
 .voice-assistant .voice-assistant-msg { padding: 15px 25px; background: #fff; border-radius: 100px; position: absolute; bottom: 0px; right: 0px; color: #212121; height: 64px; line-height: 38px; z-index: 2; transition: all .2s ease; opacity: 0; visibility: hidden; }
-.voice-assistant.active .voice-assistant-msg { right: 80px; opacity: 1; visibility: visible; }
+.voice-assistant.active .voice-assistant-msg, .voice-assistant.error .voice-assistant-msg { right: 80px; opacity: 1; visibility: visible; }
 .voice-assistant.hidden .voice-assistant-msg { -moz-animation: cssAnimation 0s ease-in 5s forwards;
     /* Firefox */
     -webkit-animation: cssAnimation 0s ease-in 5s forwards;
@@ -90,16 +90,17 @@ body.dark .main-nav .menu li a svg { fill: #fff !important; }
 
 /* Main Header */
 .main-header { left: -100%; }
+.main-header.active { left: 0; }
 
 /* Main Content */
 .site-wrapper { margin: 0 0 0 0; width: 100%; padding: 40px 0; transition: all .2s ease-in-out; }
 
 /* Voice Assistant */
 .voice-assistant { bottom: -500px; right: 0px; width: 100%; background: #fff; padding: 20px 0; height: 250px; z-index: 99; transition: bottom .3s ease-in-out; box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; border-radius: 10px 10px 0 0; }
-.voice-assistant.active { bottom: 0; }
+.voice-assistant.active, .voice-assistant.error { bottom: 0; }
 .voice-assistant .voice-assistant-btn { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important; bottom: 380px; right: 25px; transition: all .3s ease-in-out; }
-.voice-assistant.active .voice-assistant-btn { bottom: 0; right: 0; margin: 0 auto 20px auto; position: relative; box-shadow: 0 0 0 !important; }
+.voice-assistant.active .voice-assistant-btn, .voice-assistant.error .voice-assistant-btn { bottom: 0; right: 0; margin: 0 auto 20px auto; position: relative; box-shadow: 0 0 0 !important; }
 .voice-assistant .voice-assistant-msg { position: relative; text-align: center; font-size: 2rem; margin: 20px 0; }
-.voice-assistant.active .voice-assistant-msg { right: 0; font-weight: bold; }
+.voice-assistant.active .voice-assistant-msg, .voice-assistant.error .voice-assistant-msg { right: 0; font-weight: bold; }
 
 }

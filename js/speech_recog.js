@@ -64,7 +64,7 @@ function recognize() {
 		$('.speech-recognition-box').addClass('active').removeClass('with-result');
 		$('#speech-status').text('Currently Recording');
 		assistTone.play();
-		$('.voice-assistant').addClass('active');
+		$('.voice-assistant').addClass('active').removeClass('error');
 	};
 	recognition.onend = function(event) {
 		$('.speech-recognition-box').removeClass('active');
@@ -73,6 +73,100 @@ function recognize() {
 	    $('.voice-assistant').delay(2500).queue(function(){
 		  $(this).removeClass("active"); $('#transcript').text(''); $(this).dequeue();
 		});
+
+		var resultTrans = $('#transcript').text();
+		var showResult = $('.content-transcript');
+		      // Resulting Commands
+		    /* if(resultTrans == 'ok lighthouse show support') {
+		      showResult.text('Show Support [check]');
+		    } else if(resultTrans == 'ok lighthouse go to braille' || resultTrans == 'ok lighthouse translate braille' || resultTrans == 'ok lighthouse braille translate') {
+		      showResult.text('Go to Braille [check]');
+		    }; */
+
+		// Braille Commands
+		if (jQuery.inArray(resultTrans, braille)!='-1') {
+		    showResult.prepend('<br/> Go to Braille ' + braille.indexOf(resultTrans) + ' [check]');
+		    $('[href="#braille"]').tab('show');
+		} 
+
+		// Home Commands
+		else if (jQuery.inArray(resultTrans, home)!='-1') {
+		    $('[href="#home"]').tab('show');
+		}
+
+		// Speech Synthesis Commands
+		else if (jQuery.inArray(resultTrans, cancelSynthesis)!='-1') {
+				speechSynthesis.cancel();
+		}
+
+		// Convert Image to Audio Commands
+		else if (jQuery.inArray(resultTrans, convert)!='-1') {
+				$('[href="#convert"]').tab('show');
+		}
+
+		// Menu Commands
+		else if (jQuery.inArray(resultTrans, menu)!='-1') {
+		    var text = $('.nav-item').text();
+		    msg.text = text;
+		    speechSynthesis.speak(msg);
+			speechSynthesis.cancel();
+	    } 
+
+	    else if (resultTrans == "show menu") {
+	    	$('.main-header').addClass('active');
+			var text = "Showing Menu. Option One. Dark Mode is enabled. Option Two. Online Courses (link). Option Three. Online Braille Tool (link). Option Four. Image to Audio Tool (link). Option Five. Speech Recognition Tool (Link)."; msg.text = text;
+		    speechSynthesis.speak(msg);
+			/* recognize().delay(3500);
+			if($('#transcript').text() == "yes") {
+				var text = "First option. Dark Mode is enabled. Second. Online Courses (link). Third. Online Braille Tool (link). Fourth. Image to Audio Tool (link). Fifth. Speech Recognition Tool (Link)"; msg.text = text;
+		    	speechSynthesis.speak(msg);
+			} */
+	    }
+
+	    else if (resultTrans == "hide menu") {
+	    	if($('.main-header').hasClass('active')) {
+		    	$('.main-header').removeClass('active');
+				var text = "Hiding Menu"; msg.text = text;
+			    speechSynthesis.speak(msg);
+	    	} else {
+	    		var text = "Menu is already hidden"; msg.text = text;
+			    speechSynthesis.speak(msg);
+	    	}
+	    }
+
+	    // Contrast Commands
+	    else if(jQuery.inArray(resultTrans, enableContrast)!='-1') {
+		    if(!($('body').hasClass('dark'))) {
+				Cookies.set('darkmd','true');
+				$('#dark-md').addClass('active');
+				$('body').addClass('dark');
+				var text = "Enabling Dark Mode"; msg.text = text;
+		    	speechSynthesis.speak(msg);
+		    }
+	    } else if(jQuery.inArray(resultTrans, disableContrast)!='-1') {
+		    if($('body').hasClass('dark')) {
+				Cookies.set('darkmd','false');
+				$('#dark-md').removeClass('active');
+				$('body').removeClass('dark');
+				var text = "Disabling Dark Mode"; msg.text = text;
+		    	speechSynthesis.speak(msg);
+			}
+	    } 
+
+	    // Default when no command
+	    else {
+	    	showResult.prepend('<br/> Command not found. Please try again.');
+	    	$('.voice-assistant').dequeue().addClass('error');
+	    	$('.voice-assistant').delay(1000).queue(function(){
+				$('#transcript').text('No command found'); var text = "No command found"; msg.text = text;
+		    speechSynthesis.speak(msg); $(this).dequeue();
+			});
+	    	$('.voice-assistant').delay(5500).queue(function(){
+				$(this).removeClass('error'); $(this).dequeue();
+			});
+	    };
+
+
 	};
 	recognition.onresult = function(event) {
 		$('.speech-recognition-box').addClass('with-result'); 
@@ -82,59 +176,6 @@ function recognize() {
 	      $('#support').text('Confidence Level: ' + event.results[0][0].confidence);
 	    $('#speech-result').text(sentence);
 	    $('.voice-assistant').addClass('active');
-
-	var resultTrans = $('#transcript').text();
-	var showResult = $('.content-transcript');
-	      // Resulting Commands
-	    /* if(resultTrans == 'ok lighthouse show support') {
-	      showResult.text('Show Support [check]');
-	    } else if(resultTrans == 'ok lighthouse go to braille' || resultTrans == 'ok lighthouse translate braille' || resultTrans == 'ok lighthouse braille translate') {
-	      showResult.text('Go to Braille [check]');
-	    }; */
-
-	// Braille Commands
-	if (jQuery.inArray(resultTrans, braille)!='-1') {
-	    showResult.prepend('<br/> Go to Braille ' + braille.indexOf(resultTrans) + ' [check]');
-	    $('[href="#braille"]').tab('show');
-	} 
-
-	// Home Commands
-	else if (jQuery.inArray(resultTrans, home)!='-1') {
-	    $('[href="#home"]').tab('show');
-	}
-
-	// Speech Synthesis Commands
-	else if (jQuery.inArray(resultTrans, cancelSynthesis)!='-1') {
-			speechSynthesis.cancel();
-	}
-
-	// Convert Image to Audio Commands
-	else if (jQuery.inArray(resultTrans, convert)!='-1') {
-			$('[href="#convert"]').tab('show');
-	}
-
-	// Menu Commands
-	else if (jQuery.inArray(resultTrans, menu)!='-1') {
-	    var text = $('.nav-item').text();
-	    msg.text = text;
-	    speechSynthesis.speak(msg);
-		speechSynthesis.cancel();
-    } 
-
-    // Contrast Commands
-    else if(jQuery.inArray(resultTrans, enableContrast)!='-1') {
-	    $('body').addClass('darkmd');
-		$(this).addClass('active');	
-    } else if(jQuery.inArray(resultTrans, disableContrast)!='-1') {
-    	$('body').removeClass('darkmd');
-		$(this).removeClass('active');	
-    } 
-
-    // Default when no command
-    else {
-    	showResult.prepend('<br/> Command not found. Please try again.');
-    };
-
 	};
 
 	// Start Recognition
