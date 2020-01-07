@@ -11,7 +11,7 @@ body.dark { background: #131D27; color: #fff; }
 a, a:hover { text-decoration: none; }
 
 /* Main Header */
-.main-header { padding: 20px 0; position: fixed; height: 100%; width: 350px; background: #fff; top: 0; overflow-y: auto; z-index: 5; }
+.main-header { padding: 20px 0; position: fixed; height: 100%; width: 350px; background: #fff; top: 0; left: 0; overflow-y: auto; z-index: 5; transition: left .2s ease; }
 .main-header .main-logo { position: relative; margin: 30px 25px 20px 25px; }
 .main-header .main-logo span { font-weight: bold; font-size: 1.2rem;}
 .main-header .main-logo span.light { color: #212121; }
@@ -20,7 +20,7 @@ body.dark .main-header { background: #2e4863; }
 body.dark .main-header .main-logo span.light { color: #fff; }
 
 /* Main Header - Navigation */
-.main-nav { position: relative; margin: 10px 0 20px 0; }
+.main-nav { position: relative; margin: 10px 0 20px 0; display: }
 .main-nav .menu { margin: 0 0 10px 0; padding: 0; }
 .main-nav .menu .nav-title { margin: 0 25px; font-size: 13px; font-weight: bold; color: #8b8b8c; padding: 10px 0; }
 .main-nav .menu li { display: block; }
@@ -88,11 +88,17 @@ body.dark .main-nav .menu li a svg { fill: #fff !important; }
 
 @media screen and (max-width: 640px) {
 
+/* Main Header */
+.main-header { left: -100%; }
+
+/* Main Content */
+.site-wrapper { margin: 0 0 0 0; width: 100%; padding: 40px 0; transition: all .2s ease-in-out; }
+
 /* Voice Assistant */
 .voice-assistant { bottom: -500px; right: 0px; width: 100%; background: #fff; padding: 20px 0; height: 250px; z-index: 99; transition: bottom .3s ease-in-out; box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; border-radius: 10px 10px 0 0; }
 .voice-assistant.active { bottom: 0; }
-.voice-assistant .voice-assistant-btn { box-shadow: 0 0 0 !important; bottom: 380px; right: 25px; transition: all .3s ease-in-out; }
-.voice-assistant.active .voice-assistant-btn { bottom: 0; right: 0; margin: 0 auto 20px auto; position: relative; }
+.voice-assistant .voice-assistant-btn { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important; bottom: 380px; right: 25px; transition: all .3s ease-in-out; }
+.voice-assistant.active .voice-assistant-btn { bottom: 0; right: 0; margin: 0 auto 20px auto; position: relative; box-shadow: 0 0 0 !important; }
 .voice-assistant .voice-assistant-msg { position: relative; text-align: center; font-size: 2rem; margin: 20px 0; }
 .voice-assistant.active .voice-assistant-msg { right: 0; font-weight: bold; }
 

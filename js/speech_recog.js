@@ -71,7 +71,7 @@ function recognize() {
 		$('#speech-status').text('Finished Recording');
 		assistEnd.play();
 	    $('.voice-assistant').delay(2500).queue(function(){
-		  $(this).removeClass("active"); $(this).dequeue();
+		  $(this).removeClass("active"); $('#transcript').text(''); $(this).dequeue();
 		});
 	};
 	recognition.onresult = function(event) {
