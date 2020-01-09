@@ -6,18 +6,22 @@ Template Name: Project Lighthouse;
 @import url('https://fonts.googleapis.com/css?family=Public+Sans:300,400,700&display=swap');
 
 /* General */
-body { background: #f5f5f5; font-family: 'Public Sans', Arial, Sans-serif; color: #212121; }
+body { background: #f5f5f5; font-family: 'Public Sans', Arial, Sans-serif; color: #212121; position: relative; transition: all .5s ease; }
 body.dark { background: #131D27; color: #fff; }
+body.access-active { margin: 58px 0 0 0; }
 a, a:hover { text-decoration: none; }
 
 /* Main Header */
-.main-header { padding: 20px 0; position: fixed; height: 100%; width: 350px; background: #fff; top: 0; left: 0; overflow-y: auto; z-index: 5; transition: left .2s ease; }
+.main-header { padding: 20px 0; position: fixed; height: 100%; width: 350px; background: #fff; top: 0; left: 0; overflow-y: auto; z-index: 5; transition: left .2s ease, top .5s ease, height .5s ease; }
+.main-header.focused, #header-access:focus + .main-header { box-shadow: 2px 2px 2px #0292DB !important; }
+body.access-active .main-header { height: calc(100% - 58px); top: 58px; }
 .main-header .main-logo { position: relative; margin: 30px 25px 20px 25px; }
 .main-header .main-logo span { font-weight: bold; font-size: 1.2rem;}
 .main-header .main-logo span.light { color: #212121; }
 .main-header .main-logo span.dark { color: #0292DB; }
 body.dark .main-header { background: #2e4863; }
 body.dark .main-header .main-logo span.light { color: #fff; }
+.main-header .close-menu { position: absolute; top: 0; right: 0; cursor: pointer; height: 58px; width: 58px; text-align: center; line-height: 58px; }
 
 /* Main Header - Navigation */
 .main-nav { position: relative; margin: 10px 0 20px 0; display: }
@@ -32,6 +36,51 @@ body.dark .main-nav .menu li a svg { fill: #fff !important; }
 
 /* Main Content */
 .site-wrapper { margin: 0 0 0 350px; width: calc(100% - 350px); padding: 40px 0; }
+
+/* Accessibility Menu */
+.accessibility-menu { background: #0292DB; height: 58px; position: fixed; z-index: 99; width: 100%; top: -58px; transition: top .5s ease; }
+.accessibility-menu .access-left-pane { padding: 20px 0; color: #fff; font-size: 12px; }
+.accessibility-menu .access-left-pane .jumpto { position: relative; display: inline-block; margin: 0 15px 0 0; }
+.accessibility-menu .access-left-pane .jumpto span { font-weight: bold; }
+.accessibility-menu .access-left-pane .access-sections { position: relative; display: inline-block; }
+.accessibility-menu .access-left-pane .access-sections .access-section { position: relative; margin: 0 15px 0 0; display: inline-block; height: 32px; }
+.accessibility-menu .access-left-pane .access-sections .access-btn { color: #212121; font-weight: bold; padding: 5px 10px; margin: -10px 0; background: #fff; display: block; border-radius: 5px; }
+.accessibility-menu .access-left-pane .access-sections .access-btn:hover { background: #f0f0f0; }
+.accessibility-menu .access-left-pane .access-sections .access-btn:focus { border: 2px solid rgba(0,0,0,0.3); margin: -12px 0 0px -2px; }
+.accessibility-menu .access-left-pane .access-sections .access-btn i { margin: 0 0 0 5px; }
+.accessibility-menu .access-left-pane .access-sections .access-selection { background: #fff; border-radius: 5px; position: absolute; top: 20px; left: 0; padding: 10px 0; margin: 10px 0; }
+.accessibility-menu .access-left-pane .access-sections .access-selection:before { content: ''; border-left: 5px solid transparent; border-right: 5px solid transparent;  border-bottom: 5px solid white; position: absolute; top: -5px; left: 10px; }
+.accessibility-menu .access-left-pane .access-sections .access-selection li { display: block; }
+.accessibility-menu .access-left-pane .access-sections .access-selection li a { padding: 5px 10px; display: block; }
+.accessibility-menu .access-left-pane .access-sections .access-selection li:hover a, .accessibility-menu .access-left-pane .access-sections .access-selection li a:focus { background: rgba(0,0,0,0.15); }
+.accessibility-menu.active { top: 0; }
+
+/* Search Box */
+.search-bar { position: relative; margin: -40px 0 40px 0; background: rgba(0,0,0,0.15); }
+.search-bar .container { position: relative; }
+.search-bar .search-box { position: relative; height: 58px; z-index: 2; }
+.search-bar .search-box input[type="text"] { height: 58px; border: 0; color: #212121; outline: none; width: calc(100% - (58px * 2)); position: relative; background: transparent; margin: 0 0 0 58px; }
+body.dark .search-bar { background: rgba(0,0,0,0.3); }
+body.dark .search-bar .search-box input[type="text"] { color: #fff; }
+.search-bar .search-btn { position: absolute; z-index: 3; top: 0; right: 0; }
+.search-bar .search-btn button { border: 0; background: transparent; color:  #212121; height: 58px; width: 58px; }
+body.dark .search-bar .search-btn button { color: #fff; }
+.search-bar .hamburger { position: absolute; z-index: 3; top: 0; left: 0; height: 58px; width: 58px; line-height: 58px; text-align: center; color: #212121; }
+.search-bar .hamburger:hover, .search-bar .search-btn button:hover { background: rgba(0,0,0,0.15); }
+
+/* Section */
+
+/* Topics */
+.courses-section { position: relative; }
+.courses-section .topics { position: relative; display: flex; margin: 20px -15px; }
+.courses-section .topics .topic .topic-header { background-size: cover !important; background-position: top right; }
+.courses-section .topics .topic .topic-header h3 { margin: 0; background: #4192DB; color: #fff; padding: 20px; display: inline-block; }
+.courses-section .topics .topic .topic-contents { position: relative; }
+.courses-section .topics .topic .topic-contents ul { margin: 0; padding: 0; }
+.courses-section .topics .topic .topic-contents ul:not(.child) li { display: block; border-bottom: 1px solid rgba(0,0,0,0.15); }
+.courses-section .topics .topic .topic-contents ul li a span { display: block; padding: 20px; }
+.courses-section .topics .topic .topic-contents ul li .child { margin: 0 0 0 10px; }
+.courses-section .topics .topic .topic-contents ul li .child li { border-bottom: 0; }
 
 /* Footer - Miscellaneous */
 .miscellaneous { position: relative; }

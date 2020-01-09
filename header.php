@@ -34,24 +34,80 @@
 
 <?php include 'welcome.php' ?>
 
-<div class="main-header shadow-sm">
-	<div class="main-logo">
-		<a href="/ibm">
+<div class="accessibility-menu" id="accessibility">
+	<div class="container">
+		<div class="access-left-pane">
+			<div class="jumpto">
+				<span alt="Jump to">Jump to</span>
+			</div>
+			<div class="access-sections">
+				<div class="access-section page-section">
+					<a href="#" class="access-btn" data-toggle="collapse" data-target="page-section-selection" alt="Sections of this page Menu">
+						<span>Sections of this page</span>
+						<i class="fas fa-caret-down"></i>
+					</a>
+					<ul class="access-selection shadow-sm collapse" id="page-section-selection">
+						<li>
+							<a href="#main-header" id="header-access">
+								<span>Main Header</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="access-section menu-section">
+					<a href="#" class="access-btn" data-toggle="collapse" data-target="menu-section-selection">
+						<span>Website Menus</span>
+						<i class="fas fa-caret-down"></i>
+					</a>
+					<ul class="access-selection shadow-sm collapse" id="menu-section-selection">
+						<li>
+							<a href="index.php" id="course-access">
+								<span>Online Courses</span>
+							</a>
+						</li>
+						<li>
+							<a href="online-braille.php" id="braille-access">
+								<span>Online Braille</span>
+							</a>
+						</li>
+						<li>
+							<a href="image-audio.php" id="image-access">
+								<span>Image to Audio Converter</span>
+							</a>
+						</li>
+						<li>
+							<a href="speech-recog.php" id="recog-access">
+								<span>Speech Recognition Tool</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main-header shadow-sm" id="main-header">
+	<a href="#" class="close-menu">
+		<i class="fas fa-times"></i>
+	</a>
+	<div class="main-logo" id="logo">
+		<a href="/">
 			<span class="light">Project</span><span class="dark">Lighthouse</span>
 		</a>
 	</div>
-	<div class="option">
+	<div class="option" id="darkMdOption">
 			<span class="label">Dark Mode</span>
 			<input type="checkbox" name="darkmode" hidden/>
 			<a href="#">
 				<div class="option-mark shadow-sm" id="dark-md"></div>
 			</a>
 	</div>
-	<div class="main-nav">
+	<div class="main-nav" id="navMenu">
 		<ul class="menu">
 			<div class="nav-title">Menu</div>
 			<li>
-				<a href="course.php">
+				<a href="index.php">
 					<img src="img/course.svg" class="svg"/>
 					<span>Online Courses</span>
 				</a>

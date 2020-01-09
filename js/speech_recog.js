@@ -114,6 +114,7 @@ function recognize() {
 
 	    else if (resultTrans == "show menu") {
 	    	$('.main-header').addClass('active');
+	    	$('body').addClass('sidebarOpen');
 			var text = "Showing Menu. Option One. Dark Mode is enabled. Option Two. Online Courses (link). Option Three. Online Braille Tool (link). Option Four. Image to Audio Tool (link). Option Five. Speech Recognition Tool (Link)."; msg.text = text;
 		    speechSynthesis.speak(msg);
 			/* recognize().delay(3500);

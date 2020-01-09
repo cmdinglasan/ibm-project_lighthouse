@@ -16,6 +16,11 @@ Mousetrap.bind('+', function(e) {
     });
 });
 
+Mousetrap.bind('alt+/', function(e) {
+    $('#accessibility').toggleClass('active');
+    $('body').toggleClass('access-active');
+});
+
 $(document).ready(function() {
     $('#incFont').click(function() {
         $('body').css("font-size", function() {
@@ -27,11 +32,29 @@ $(document).ready(function() {
             return parseInt($(this).css('font-size')) - 3 + 'px';
         });
     });
+    $('.hamburger, .close-menu').click(function() {
+        $('.main-header').toggleClass('active');
+        $('body').toggleClass('sidebarOpen');
+    });
 
 	/* Clear Textbox Contents */
 	$('.clearTxt').on('click', function() {
 		$('textarea').val('');
 	});
+
+    $('.access-btn').on('focus', function(){
+        $(this).addClass('focused');
+    });
+
+    $(".page-section .access-btn").on('click focus', function(){
+        $("#page-section-selection").collapse('toggle').toggleClass('focus');
+    });
+    $(".menu-section .access-btn").on('click focus', function(){
+        $("#menu-section-selection").collapse('toggle').toggleClass('focus');
+    });
+    $('#header-access').hover(function() {
+        $("#main-header").toggleClass('focused');
+    });
 
      /**
      * Replace all SVG images with inline SVG
