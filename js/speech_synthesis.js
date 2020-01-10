@@ -72,6 +72,15 @@ $(function(){
     };
   });
 
+  $('.main-nav a').on('hover focus',function(){
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+      var text = $(this).text();
+      msg.text = text;
+      speechSynthesis.speak(msg);
+    }
+  });
+
   $('#courses-tab').click(function(){
     if(speechSynthesis.speaking){
       speechSynthesis.cancel();

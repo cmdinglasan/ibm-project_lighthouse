@@ -86,12 +86,24 @@ function recognize() {
 		// Braille Commands
 		if (jQuery.inArray(resultTrans, braille)!='-1') {
 		    showResult.prepend('<br/> Go to Braille ' + braille.indexOf(resultTrans) + ' [check]');
-		    $('[href="#braille"]').tab('show');
+			if(speechSynthesis.speaking){
+		      speechSynthesis.cancel();
+		      var text = 'Redirecting to Online Braille';
+		      msg.text = text;
+		      speechSynthesis.speak(msg);
+		    };
+		    $(location).delay(2500).attr('href','online-braille.php');
 		} 
 
 		// Home Commands
 		else if (jQuery.inArray(resultTrans, home)!='-1') {
-		    $('[href="#home"]').tab('show');
+			if(speechSynthesis.speaking){
+		      speechSynthesis.cancel();
+		      var text = 'Redirecting to Homepage';
+		      msg.text = text;
+		      speechSynthesis.speak(msg);
+		    };
+		    $(location).delay(2500).attr('href','https://ibm-project-lighthouse.herokuapp.com');
 		}
 
 		// Speech Synthesis Commands
@@ -101,7 +113,13 @@ function recognize() {
 
 		// Convert Image to Audio Commands
 		else if (jQuery.inArray(resultTrans, convert)!='-1') {
-				$('[href="#convert"]').tab('show');
+			if(speechSynthesis.speaking){
+		      speechSynthesis.cancel();
+		      var text = 'Redirecting to Image to audio Conversion';
+		      msg.text = text;
+		      speechSynthesis.speak(msg);
+		    };
+		    $(location).delay(2500).attr('href','image-audio.php');
 		}
 
 		// Menu Commands
