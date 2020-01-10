@@ -107,7 +107,7 @@
 		<ul class="menu">
 			<div class="nav-title">Menu</div>
 			<li>
-				<a href="index.php">
+				<a href="index.php" alt="Online Courses (link)">
 					<img src="img/course.svg" class="svg"/>
 					<span>Online Courses</span>
 				</a>
@@ -116,7 +116,7 @@
 		<ul class="menu">
 			<div class="nav-title">Tools</div>
 			<li>
-				<a href="online-braille.php">
+				<a href="online-braille.php" alt="Online Braille (link)">
 					<img src="img/braille.svg" class="svg"/>
 					<span>Online Braille</span>
 				</a>
