@@ -27,6 +27,9 @@ $(document).ready(function() {
             return parseInt($(this).css('font-size')) + 3 + 'px';
         });
     });
+    $('#next-one').click(function() {
+        $('.welcome-screen').hide();
+    });
     $('#decFont').click(function() {
         $('body').css("font-size", function() {
             return parseInt($(this).css('font-size')) - 3 + 'px';
