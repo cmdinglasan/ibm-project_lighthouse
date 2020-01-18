@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
 <div class="site-wrapper">
+	<?php include 'search-bar.php'; ?>
 	<div class="speech-recognition">
 		<div class="container">
 			<span>Text Recognition</span><br/>

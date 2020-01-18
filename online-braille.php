@@ -9,6 +9,7 @@ $(document).ready(function() {
 </script>
 
 <div class="site-wrapper">
+  <?php include 'search-bar.php'; ?>
 	<div class="container">
 
 <h1>Braille Converter</h1>

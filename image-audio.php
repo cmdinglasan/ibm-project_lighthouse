@@ -9,6 +9,7 @@ $(document).ready(function() {
 </script>
 
 <div class="site-wrapper">
+	<?php include 'search-bar.php'; ?>
 	<div class="container">
 		
 <div class="container-fluid">
