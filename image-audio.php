@@ -1,5 +1,13 @@
 <?php include 'header.php';?>
 
+<script>
+$(document).ready(function() {
+  text = 'Welcome to Image to Audio Converter. Ask for assistance for the image to be converted.';
+    msg.text = text;
+    speechSynthesis.speak(msg);
+});
+</script>
+
 <div class="site-wrapper">
 	<div class="container">
 		

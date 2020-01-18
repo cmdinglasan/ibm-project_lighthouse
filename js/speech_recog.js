@@ -18,8 +18,8 @@ assistEnd.setAttribute('src','sample-files/siriEnd.mp3');
 var com = 'lighthouse ';
 var enable = 'enable ';
 var disable = 'disable ';
-var braille = ['go to braille', 'translate braille', 'braille translate', 'grill translate'];
-var home = ['go home', 'go to home', 'select home'];
+var braille = ['go to braille', 'translate braille', 'braille translate', 'grill translate', 'go to option 3', 'select option 3'];
+var home = ['go home', 'go to home', 'select home', 'go to option 2', 'select option 2'];
 var menu = ['menu'];
 var convert = ['go to convert', 'convert image to audio', 'go2convert'];
 var contrastCmd = ['dark mode'];
@@ -103,7 +103,7 @@ function recognize() {
 		      msg.text = text;
 		      speechSynthesis.speak(msg);
 		    };
-		    $(location).delay(2500).attr('href','https://ibm-project-lighthouse.herokuapp.com');
+		    $(location).delay(2500).attr('href','index.php');
 		}
 
 		// Speech Synthesis Commands
@@ -192,6 +192,7 @@ function recognize() {
 	    var last = event.results.length - 1;
 	    var sentence = event.results[last][0].transcript;
 	      $('#transcript').text(sentence);
+	      $('#transcrip').text(sentence);
 	      $('#support').text('Confidence Level: ' + event.results[0][0].confidence);
 	    $('#speech-result').text(sentence);
 	    $('.voice-assistant').addClass('active');

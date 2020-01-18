@@ -1,5 +1,13 @@
 <?php include 'header.php'?>
 
+<script>
+$(document).ready(function() {
+  text = 'Welcome to Project Lighthouse. Navigate through the website using the Tab and Shift + Tab keys';
+    msg.text = text;
+    speechSynthesis.speak(msg);
+});
+</script>
+
 <div class="site-wrapper">
 	<?php include 'search-bar.php'; ?>
 	<div class="container">

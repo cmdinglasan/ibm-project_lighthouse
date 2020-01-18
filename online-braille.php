@@ -1,5 +1,13 @@
 <?php include 'header.php'; ?>
 
+<script>
+$(document).ready(function() {
+  text = 'Welcome to Online Braille. Start typing using braille.';
+    msg.text = text;
+    speechSynthesis.speak(msg);
+});
+</script>
+
 <div class="site-wrapper">
 	<div class="container">
 
@@ -45,9 +53,9 @@
 			 		</div>
 			 		<div class="row">
 			 			<div class="col-md-6">
-			 				<kbd>7</kbd> &nbsp; <kbd>8</kbd> &nbsp; <br/>
-			 				<kbd>4</kbd> &nbsp; <kbd>5</kbd> &nbsp; <br/>
-			 				<kbd>1</kbd> &nbsp; <kbd>2</kbd> &nbsp; <br/>
+			 				<kbd>F</kbd> &nbsp; <kbd>J</kbd> &nbsp; <br/>
+			 				<kbd>D</kbd> &nbsp; <kbd>K</kbd> &nbsp; <br/>
+			 				<kbd>S</kbd> &nbsp; <kbd>L</kbd> &nbsp; <br/>
 			 			</div>
 			 		</div>
 			 	</div>
@@ -65,130 +73,19 @@ secTxt.value = firstTxt;
 </script>
 
 <script type="text/JavaScript">
-Mousetrap.bind('s', function(e) {
+Mousetrap.bind('f ', function(e) {
     $(".btn-two,.btn-four,.btn-five,.btn-six").removeClass("active");
     $(".btn-one,.btn-three").addClass("active");
     $(".braille-area").append("a");
 });
-Mousetrap.bind('s d', function(e) {
-  	$(".btn-two,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-three").addClass("active");
-  	$(".braille-area").append("b");
+Mousetrap.bind('f s', function(e) {
+    $(".braille-area").append("b");
 });
-Mousetrap.bind('d+s', function(e) {
-  	$(".btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two").addClass("active");
-  	$(".braille-area").append("c");
+Mousetrap.bind('f j', function(e) {
+    $(".braille-area").append("c");
 });
-Mousetrap.bind('7 8+5', function(e) {
-  	$(".btn-three,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-four").addClass("active");
-  	$(".braille-area").append("d");
-});
-Mousetrap.bind('e', function(e) {
-  	$(".btn-two,.btn-three,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-four").addClass("active");
-  	$(".braille-area").append("e");
-});
-Mousetrap.bind('f', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("f");
-});
-Mousetrap.bind('g', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("g");
-});
-Mousetrap.bind('h', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("h");
-});
-Mousetrap.bind('i', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("i");
-});
-Mousetrap.bind('j', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("j");
-});
-Mousetrap.bind('k', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("k");
-});
-Mousetrap.bind('l', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("l");
-});
-Mousetrap.bind('m', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("m");
-});
-Mousetrap.bind('n', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("n");
-});
-Mousetrap.bind('o', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("o");
-});
-Mousetrap.bind('p', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("p");
-});
-Mousetrap.bind('q', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("q");
-});
-Mousetrap.bind('r', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("r");
-});
-Mousetrap.bind('t', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("t");
-});
-Mousetrap.bind('u', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("u");
-});
-Mousetrap.bind('v', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("v");
-});
-Mousetrap.bind('w', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("w");
-});
-Mousetrap.bind('x', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("x");
-});
-Mousetrap.bind('y', function(e) {
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").removeClass("active");
-  	$(".btn-one,.btn-two,.btn-three,.btn-four,.btn-five,.btn-six").addClass("active");
-  	$(".braille-area").append("y");
-});
-Mousetrap.bind('z', function(e) {
-    $(".btn-two,.btn-three,").removeClass("active");
-    $(".btn-one,.btn-four,.btn-five,.btn-six").addClass("active");
-    $(".braille-area").append("z");
+Mousetrap.bind('j d', function(e) {
+    $(".braille-area").append("i");
 });
 </script>
 

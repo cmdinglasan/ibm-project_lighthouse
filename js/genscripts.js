@@ -9,10 +9,13 @@ $(document).keydown(function(e) {
 });
 
 Mousetrap.bind('+', function(e) {
-  	$('#incFont').click(function() {
-        $('body').css("font-size", function() {
-            return parseInt($(this).css('font-size')) + 3 + 'px';
-        });
+    $('body, h2, h3').css("font-size", function() {
+        return parseInt($(this).css('font-size')) + 3 + 'px';
+    });
+});
+Mousetrap.bind('-', function(e) {
+    $('body, h2, h3').css("font-size", function() {
+        return parseInt($(this).css('font-size')) - 3 + 'px';
     });
 });
 
